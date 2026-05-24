@@ -1,0 +1,8 @@
+
+[{
+
+    df fooBar { x int, y int, z int ->
+
+    }
+
+} HelloWorld.get { @void ->  }
