@@ -51,28 +51,56 @@ public class Parser {
 
         tokens.expect("{");
 
-        var builder = new StringBuilder();
+        var list = new ArrayList<String>();
 
         String token;
-        while (!(token = tokens.get()).equals("-")) {
-            if (token.equals("@")) {
-                tokens.next();
-                tokens.expect("void");
+        while (!(token = tokens.get()).equals("}")) {
+            list.addFirst(token);
 
-                break;
-            }
-
-            builder.append(token).append(" ");
             tokens.next();
         }
 
-        var parameters = builder.toString().split(",");
-
-        tokens.expect("-");
-        tokens.expect(">");
+        parseBlock(new Tokens(list));
 
         tokens.expect("}");
 
         return new FunctionAst(name);
+    }
+
+    public void parseBlock(Tokens tokens) {
+        var list = new ArrayList<String>();
+
+        var builder = new StringBuilder();
+
+        while (tokens.hasNext()) {
+            var token = tokens.get();
+            tokens.next();
+
+            if (token.equals(">")) {
+                if (tokens.get().equals("-")) {
+                    tokens.next();
+
+                    while (tokens.hasNext() && !tokens.get().equals(",")) {
+                        var pType = tokens.get();
+                        tokens.next();
+
+                        var pName = tokens.get();
+                        tokens.next();
+
+                        builder.append(pName).append(" ").append(pType).append(",");
+
+                        tokens.next();
+                    }
+                    break;
+                }
+
+                continue;
+            }
+
+            list.addFirst(token);
+        }
+
+        var parameters = builder.toString().split(",");
+
     }
 }

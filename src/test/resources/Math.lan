@@ -1,0 +1,10 @@
+
+[{
+
+} Vec3f
+.add { vec3f Vec3f ->
+    ..Vec3f(x + vec3.x, y + vec3f.y, z + vec3f.z)
+}
+.take { vec3f Vec3f ->
+    ..Vec3f(x - vec3.x, y - vec3f.y, z - vec3f.z)
+}

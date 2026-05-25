@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Tokens {
-    public static final String REGEX = "[a-z][a-zA-Z0-9]*|\\S";
+    public static final String REGEX = "[a-zA-Z][a-zA-Z0-9]*|\\S";
 
     private final List<String> tokens;
 

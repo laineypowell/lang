@@ -1,8 +1,7 @@
 
 [{
-
-    df fooBar { x int, y int, z int ->
-
+    df helloWorld {
+        print("Hello World")
     }
 
-} HelloWorld.get { @void ->  }
+} FooBar

@@ -1,0 +1,12 @@
+
+[{
+
+} Chunk
+.get { x int, y int, z int ->
+    blocks[indexOf(x, y, z)]
+}
+.set { x int, y int, z int, block int ->
+    blocks[indexOf(x, y, z)] = block
+}
+
+df indexOf { x int, y int, z int -> x * 16 + y * 16 * 16 + z }
